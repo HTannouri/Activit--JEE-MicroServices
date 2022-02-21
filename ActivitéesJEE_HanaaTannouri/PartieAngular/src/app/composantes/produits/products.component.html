@@ -1,0 +1,54 @@
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">price</th>
+      <th scope="col">quantity</th>
+      <th scope="col">Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of products">
+      <th>{{c.id}}</th>
+      <td>{{c.name}}</td>
+      <td>{{c.price}}</td>
+      <td>{{c.quantity}}</td>
+      <td>
+        <a *ngIf="kcSec.isAdmin()" (click)="onRemove(c.id)"class="btn btn-danger">REMOVE</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<div *ngIf="kcSec.isAdmin()" class="row mt-3">
+  <div class="col-2"></div>
+
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header">Ajouter un nouveau client</div>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" name="name" aria-describedby="emailHelp" ngModel>
+          </div>
+          <div class="form-group">
+            <label>price</label>
+            <input type="number" class="form-control" name="price" aria-describedby="emailHelp" ngModel>
+          </div>
+          <div class="form-group">
+            <label>quantity</label>
+            <input type="number" class="form-control" name="quantity" aria-describedby="emailHelp" ngModel>
+          </div>
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-2"></div>
+</div>
